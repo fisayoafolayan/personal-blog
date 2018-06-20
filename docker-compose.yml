@@ -1,0 +1,20 @@
+version: '2'
+services:
+  test_app:
+    build: ./wordpress
+    container_name: test_app
+    links:
+      - test_app:mysql
+    env_file:
+      - .env
+    ports:
+      - 46356:80
+    volumes:
+      - ./wordpress/src:/var/www/html
+  test_app_db:
+    build: ./database
+    container_name: test_app_db
+    env_file:
+      - .env
+    volumes:
+      - ./database/data:/var/lib/mysql
