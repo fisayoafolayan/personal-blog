@@ -1,19 +1,19 @@
 version: '2'
 services:
-  test_app:
+  personal_blog:
     build: ./wordpress
-    container_name: test_app
+    container_name: personal_blog
     links:
-      - test_app:mysql
+      - personal_blog_db:mysql
     env_file:
       - .env
     ports:
-      - 46356:80
+      - 46396:80
     volumes:
       - ./wordpress/src:/var/www/html
-  test_app_db:
+  personal_blog_db:
     build: ./database
-    container_name: test_app_db
+    container_name: personal_blog_db
     env_file:
       - .env
     volumes:
